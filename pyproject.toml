@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yadtq"
+version = "0.2.0"
+description = "Yet Another Distributed Task Queue: Kafka as the broker, Redis as the result backend"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "kafka-python>=2.0.3",
+    "redis>=4.5",
+    "rich>=13",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7", "fakeredis>=2.20"]
+
+[project.scripts]
+yadtq = "yadtq.cli:main"
+
+[tool.setuptools]
+packages = ["yadtq"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
